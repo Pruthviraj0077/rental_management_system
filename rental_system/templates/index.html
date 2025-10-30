@@ -1,0 +1,9 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="text-center mt-5">
+  <h1 class="display-5 fw-bold">Welcome to Rental Management System</h1>
+  <p class="lead mt-3">Manage tenants, record payments, and track balances easily.</p>
+  <a href="{{ url_for('tenants') }}" class="btn btn-primary btn-lg mx-2">Manage Tenants</a>
+  <a href="{{ url_for('payments') }}" class="btn btn-success btn-lg mx-2">Manage Payments</a>
+</div>
+{% endblock %}
