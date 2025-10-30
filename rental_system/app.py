@@ -4,6 +4,7 @@ from datetime import date
 from functools import wraps
 from werkzeug.security import check_password_hash
 from werkzeug.security import generate_password_hash
+import os
 
 # INSERT INTO admin (username, password_hash) VALUES ('admin', '32768:8:1$8W0lkzE8dr3srHXz$de3d2bfe3d53c3af8f701fdd8f80abb2a59bf0d67c1c3af9f464593befa48255d689e8a1cc91c8203dcc05928bed9a876c349158b659d0a4b08d532bbdc9ae1a');
 
@@ -15,10 +16,10 @@ app.secret_key = "rental_secret_2025"
 # ---------------- MySQL Connection ----------------
 def get_connection():
     return mysql.connector.connect(
-        host="localhost",
-        user="root",
-        password="admin123",
-        database="rental_system"
+        host=os.getenv("DB_HOST", "localhost"),
+        user=os.getenv("DB_USER", "root"),
+        password=os.getenv("DB_PASSWORD", "admin123"),
+        database=os.getenv("DB_NAME", "rental_system")
     )
 # print("hash password",generate_password_hash("admin123"))
 
